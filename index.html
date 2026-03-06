@@ -52,6 +52,24 @@
             transform: scale(1.2) translateY(-5px);
             z-index: 1000;
         }
+
+        /* 🖨️ A4 용지 꽉 찬 인쇄를 위한 특수 CSS 로직 */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 12mm; /* 인쇄 여백 최소화 */
+            }
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            /* 배경색 및 테두리가 인쇄 시 누락되지 않도록 강제 지정 */
+            th { background-color: #e5e7eb !important; }
+            td.bg-gray-100 { background-color: #f3f4f6 !important; }
+        }
     </style>
 </head>
 <body class="antialiased pb-20 md:pb-0">
@@ -63,7 +81,7 @@
     <header class="bg-white/95 backdrop-blur-md shadow-md sticky top-0 z-50 transition-all duration-300">
         <nav class="container mx-auto px-4 h-16 flex items-center justify-between">
             <div class="flex items-center gap-2 shrink-0">
-                <!-- 투어메이커 메인 로고 -->
+                <!-- 투어메이커 메인 로고 (필수 적용) -->
                 <a href="http://tourmaker.kr" target="_blank">
                     <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgHfgIX70O5k6Anuo0UgALIdaG9jSga9auHu3uyz0uEirylGPAJnjN_qQbvEGMUvPqUQf_g9FMNUHRxlDcUBf4vZ3Mpy4TnA9WxbmzWYK11gt2zuy_Irl4wctNFjcjLyPo0GPXV792o_J7L9guRMuDfeC1gy7USwywjYbECZgzcsHybuGRRAXAnO1eNmP8/s320/logo.png" alt="Tourmaker" class="h-6 md:h-7">
                 </a>
@@ -364,90 +382,107 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer style="background-color: #f8f9fa;" class="py-16 border-t border-slate-200">
-        <div class="container mx-auto px-4 text-center">
-            <!-- tourmaker.kr 바로가기 박스 -->
-            <div class="flex flex-col items-center justify-center mb-10">
-                <a href="http://tourmaker.kr" target="_blank" class="bg-white border border-slate-300 rounded-[1.2rem] px-8 py-4 hover:shadow-lg transition-all transform hover:-translate-y-1">
+    <!-- Footer (투어메이커 B2B 제휴 표준 포맷 반영) -->
+    <footer style="background-color: #f8f9fa; padding: 40px 0; text-align: center;">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col items-center justify-center mb-6">
+                <a href="http://tourmaker.kr" target="_blank" class="bg-white border border-slate-300 rounded-[1.2rem] px-8 py-4 hover:shadow-lg transition-all transform hover:-translate-y-1 inline-block">
                     <div class="flex items-center gap-4">
                         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgHfgIX70O5k6Anuo0UgALIdaG9jSga9auHu3uyz0uEirylGPAJnjN_qQbvEGMUvPqUQf_g9FMNUHRxlDcUBf4vZ3Mpy4TnA9WxbmzWYK11gt2zuy_Irl4wctNFjcjLyPo0GPXV792o_J7L9guRMuDfeC1gy7USwywjYbECZgzcsHybuGRRAXAnO1eNmP8/s320/logo.png" alt="Tourmaker" class="h-6">
-                        <span class="text-sm font-bold text-slate-700">공식 홈페이지 바로가기 <i class="fa-solid fa-chevron-right text-xs ml-1"></i></span>
+                        <span class="text-sm font-bold text-slate-700">홈페이지 바로가기 <i class="fa-solid fa-chevron-right text-xs ml-1"></i></span>
                     </div>
                 </a>
             </div>
-            
-            <!-- B2B 제휴 문구 포맷 -->
-            <p style="font-size: 13px; color: #6c757d; text-align: center;" class="font-normal mb-8 max-w-2xl mx-auto leading-relaxed px-4">
+            <p style="font-size: 13px; color: #6c757d; font-weight: normal; margin: 0 auto; line-height: 1.6; max-width: 600px;">
                 [System Powered by TOURMAKER] 본 스마트 가이드북은 **정선군청 가족행복과**의 기획과 <a href="http://tourmaker.kr" target="_blank" style="font-weight: bold; color: #6c757d; text-decoration: underline; text-underline-offset: 2px;">투어메이커</a>의 트래블 테크 기술 제휴로 제작되었습니다.
             </p>
-            <p class="text-[10px] text-slate-400 tracking-widest uppercase">&copy; 2026 Tourmaker Inc. All rights reserved.</p>
+            <p style="font-size: 10px; color: #adb5bd; margin-top: 15px; letter-spacing: 0.05em; text-transform: uppercase;">
+                &copy; 2026 Tourmaker Inc. All rights reserved.
+            </p>
         </div>
     </footer>
 
     </div> <!-- 화면용 메인 래퍼 종료 -->
 
-    <!-- 인쇄용 레이아웃 (Hidden on Screen) -->
-    <div class="hidden print:block bg-white text-black p-8 w-full" style="max-width: 210mm; margin: 0 auto;">
-        <div class="border-b-4 border-black pb-6 mb-8 text-center">
+    <!-- 🖨️ 인쇄용 A4 레이아웃 (Hidden on Screen, Flex on Print) -->
+    <div id="print-layout" class="hidden print:flex flex-col h-[260mm] w-full bg-white text-black mx-auto p-4 box-border">
+        
+        <!-- Header (축소 방지용 shrink-0) -->
+        <div class="border-b-4 border-black pb-4 mb-4 text-center shrink-0">
             <h1 class="text-3xl font-black text-center mb-2">[정선군청] 2026 보육교직원 워크숍 일정표</h1>
             <p class="text-sm text-gray-600 font-bold tracking-widest uppercase italic">2026. 06. 24 - 06. 26 | Jeju Healing Workshop</p>
         </div>
-        <div class="mb-6 flex justify-between text-xs font-bold">
-            <span>기관명: 정선군청 가족행복과</span>
-            <span>숙소: 아시아호텔 (2인실)</span>
+        
+        <div class="mb-4 flex justify-between text-sm font-bold shrink-0 px-2">
+            <span>■ 기관명: 정선군청 가족행복과</span>
+            <span>■ 숙소: 아시아호텔 (2인 1실)</span>
         </div>
-        <table class="w-full text-xs border-collapse border-2 border-black">
-            <thead>
-                <tr class="bg-gray-100 text-center font-black">
-                    <th class="border border-gray-400 p-3 w-16">일자</th>
-                    <th class="border border-gray-400 p-3 w-20">시간</th>
-                    <th class="border border-gray-400 p-3">상세 일정</th>
-                    <th class="border border-gray-400 p-3 w-20">식사</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="border border-gray-400 p-4 text-center font-black bg-gray-50">1일차<br>6/24(수)</td>
-                    <td class="border border-gray-400 p-4 text-center leading-tight">11:10 원주발<br>12:25 제주착</td>
-                    <td class="border border-gray-400 p-4 leading-relaxed">
-                        • 원주공항 탑승수속 및 제주공항 기사 미팅<br>
-                        • 중식(갈치조림+고등어구이) 후 <strong>공립 행복한나무어린이집 방문</strong><br>
-                        • 도두봉 & 무지개해안도로 관광<br>
-                        • 석식(회정식) 및 숙소 체크인
-                    </td>
-                    <td class="border border-gray-400 p-4 text-center">중:갈치조림<br>석:회정식</td>
-                </tr>
-                <tr>
-                    <td class="border border-gray-400 p-4 text-center font-black bg-gray-50">2일차<br>6/25(목)</td>
-                    <td class="border border-gray-400 p-4 text-center font-bold">종일<br>전용버스</td>
-                    <td class="border border-gray-400 p-4 leading-relaxed">
-                        • 08:40 세미나실 단체사진 촬영 후 관광 출발<br>
-                        • <strong>사려니숲길</strong> 힐링 산책<br>
-                        • 오조리포구(드라마 촬영지) 산책 및 중식(돌문어덮밥)<br>
-                        • <strong>제주 레일바이크</strong> 및 삼양 족욕체험 힐링<br>
-                        • 석식(흑돼지구이) 및 자유시간
-                    </td>
-                    <td class="border border-gray-400 p-4 text-center">조:호텔식<br>중:덮밥<br>석:흑돼지</td>
-                </tr>
-                <tr>
-                    <td class="border border-gray-400 p-4 text-center font-black bg-gray-50">3일차<br>6/26(금)</td>
-                    <td class="border border-gray-400 p-4 text-center leading-tight">15:20 제주발<br>16:35 원주착</td>
-                    <td class="border border-gray-400 p-4 leading-relaxed">
-                        • <strong>송당동화마을</strong> 관람 및 <strong>스카이워터쇼</strong> 공연 관람<br>
-                        • 중식(토종닭 샤브샤브) 후 공항 이동<br>
-                        • 제주공항 출발 및 원주공항 도착/해산
-                    </td>
-                    <td class="border border-gray-400 p-4 text-center">조:호텔식<br>중:샤브샤브</td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="mt-12 pt-6 border-t-2 border-gray-300 flex justify-between items-center">
+        
+        <!-- Table 영역 (flex-grow를 통해 A4 페이지 남은 공간을 꽉 채움) -->
+        <div class="flex-grow flex flex-col">
+            <table class="w-full h-full border-collapse border-2 border-black text-sm">
+                <thead>
+                    <tr class="bg-gray-200 text-center font-black h-10">
+                        <th class="border-2 border-black w-20">일자</th>
+                        <th class="border-2 border-black w-24">시간</th>
+                        <th class="border-2 border-black">상세 일정</th>
+                        <th class="border-2 border-black w-24">식사</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Row 1 -->
+                    <tr>
+                        <td class="border-2 border-black text-center font-black bg-gray-100">1일차<br>6/24(수)</td>
+                        <td class="border-2 border-black text-center font-bold">11:10 원주발<br>12:25 제주착</td>
+                        <td class="border-2 border-black p-4 leading-loose text-[15px]">
+                            <ul class="list-disc pl-5 space-y-2 font-medium">
+                                <li>원주공항 탑승수속 및 제주공항 기사 미팅</li>
+                                <li>중식(갈치조림+고등어구이) 후 <span class="font-black text-black">공립 행복한나무어린이집 방문</span></li>
+                                <li>도두봉 & 무지개해안도로 관광</li>
+                                <li>석식(회정식) 및 숙소 체크인</li>
+                            </ul>
+                        </td>
+                        <td class="border-2 border-black text-center font-bold leading-relaxed">중: 갈치조림<br>석: 회정식</td>
+                    </tr>
+                    <!-- Row 2 -->
+                    <tr>
+                        <td class="border-2 border-black text-center font-black bg-gray-100">2일차<br>6/25(목)</td>
+                        <td class="border-2 border-black text-center font-bold">종일<br>전용버스</td>
+                        <td class="border-2 border-black p-4 leading-loose text-[15px]">
+                            <ul class="list-disc pl-5 space-y-2 font-medium">
+                                <li>08:40 세미나실 단체사진 촬영 후 관광 출발</li>
+                                <li><span class="font-black text-black">사려니숲길</span> 힐링 산책</li>
+                                <li>오조리포구(드라마 촬영지) 산책 및 중식(돌문어덮밥)</li>
+                                <li><span class="font-black text-black">제주 레일바이크</span> 및 삼양 족욕체험 힐링</li>
+                                <li>석식(흑돼지구이) 및 자유시간</li>
+                            </ul>
+                        </td>
+                        <td class="border-2 border-black text-center font-bold leading-relaxed">조: 호텔식<br>중: 덮밥<br>석: 흑돼지</td>
+                    </tr>
+                    <!-- Row 3 -->
+                    <tr>
+                        <td class="border-2 border-black text-center font-black bg-gray-100">3일차<br>6/26(금)</td>
+                        <td class="border-2 border-black text-center font-bold">15:20 제주발<br>16:35 원주착</td>
+                        <td class="border-2 border-black p-4 leading-loose text-[15px]">
+                            <ul class="list-disc pl-5 space-y-2 font-medium">
+                                <li><span class="font-black text-black">송당동화마을</span> 관람 및 <span class="font-black text-black">스카이워터쇼</span> 관람</li>
+                                <li>중식(토종닭 샤브샤브) 후 공항 이동</li>
+                                <li>제주공항 출발 및 원주공항 도착/해산</li>
+                            </ul>
+                        </td>
+                        <td class="border-2 border-black text-center font-bold leading-relaxed">조: 호텔식<br>중: 샤브샤브</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Footer (축소 방지용 shrink-0) -->
+        <div class="mt-6 pt-4 border-t-2 border-gray-400 flex justify-between items-center shrink-0">
             <div class="flex items-center gap-2">
-                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgHfgIX70O5k6Anuo0UgALIdaG9jSga9auHu3uyz0uEirylGPAJnjN_qQbvEGMUvPqUQf_g9FMNUHRxlDcUBf4vZ3Mpy4TnA9WxbmzWYK11gt2zuy_Irl4wctNFjcjLyPo0GPXV792o_J7L9guRMuDfeC1gy7USwywjYbECZgzcsHybuGRRAXAnO1eNmP8/s320/logo.png" style="height: 22px;">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgHfgIX70O5k6Anuo0UgALIdaG9jSga9auHu3uyz0uEirylGPAJnjN_qQbvEGMUvPqUQf_g9FMNUHRxlDcUBf4vZ3Mpy4TnA9WxbmzWYK11gt2zuy_Irl4wctNFjcjLyPo0GPXV792o_J7L9guRMuDfeC1gy7USwywjYbECZgzcsHybuGRRAXAnO1eNmP8/s320/logo.png" style="height: 20px;">
                 <span class="text-xs font-black text-gray-600 tracking-tighter">TOURMAKER INC. DIGITAL SMART GUIDE</span>
             </div>
-            <p class="text-[10px] text-gray-400 italic">본 일정표는 기상 및 현지 상황에 따라 다소 변경될 수 있습니다.</p>
+            <p class="text-xs text-gray-500 font-medium italic">본 일정표는 기상 및 현지 상황에 따라 변경될 수 있습니다.</p>
         </div>
     </div>
 
