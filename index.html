@@ -14,10 +14,10 @@
       gtag('config', 'G-JLH9GD9SVR');
     </script>
 
-    <!-- SEO & Open Graph (가이드북용 고화질 풍경 썸네일 적용) -->
+    <!-- SEO & Open Graph (요청하신 썸네일 이미지 반영) -->
     <meta name="description" content="아이들의 내일을 밝히는 정선의 원동력! 보육교직원 힐링 워크숍 스마트 가이드북">
     <meta property="og:title" content="🌴 [정선군청] 2026 어린이집 보육교직원 워크숍">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1599839619722-39751411ea63?q=80&w=1200&auto=format&fit=crop">
+    <meta property="og:image" content="https://tse3.mm.bing.net/th/id/OIP.Zqp2XIla1IFmDdVPSnL6hwHaE8?w=474&h=474&c=7&p=0">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -32,8 +32,9 @@
         body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #1e293b; }
         .font-title { font-family: 'Noto Sans KR', sans-serif; letter-spacing: -0.025em; }
         .hero-bg { 
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1599839619722-39751411ea63?q=80&w=2068&auto=format&fit=crop');
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('https://ndev-api.visitjeju.net/ptLettnfiledetail/real_path/202511/25/411d373f-025d-42f3-9ada-d63e2c27c08f.webp');
             background-size: cover; background-position: center; background-attachment: fixed;
+            background-repeat: no-repeat;
         }
         @media (max-width: 768px){ .hero-bg { background-attachment: scroll; } }
         #map { height: 500px; width: 100%; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
@@ -90,6 +91,7 @@
             <div class="flex-1 overflow-x-auto no-scrollbar ml-4 md:ml-6">
                 <div class="flex items-center space-x-1 md:space-x-6 whitespace-nowrap pr-4">
                     <a href="#home" class="px-3 py-2 text-sm font-bold text-slate-600 hover:text-orange-600 hover:bg-slate-50 rounded-lg transition-colors">홈</a>
+                    <a href="#about-jeju" class="px-3 py-2 text-sm font-medium text-slate-600 hover:text-orange-600 hover:bg-slate-50 rounded-lg transition-colors">제주소개</a>
                     <a href="#highlights" class="px-3 py-2 text-sm font-bold text-orange-600 hover:text-orange-800 hover:bg-orange-50 rounded-lg transition-colors"><i class="fa-solid fa-star mr-1 text-yellow-400"></i>포인트</a>
                     <a href="#preview" class="px-3 py-2 text-sm font-medium text-teal-600 hover:text-teal-800 hover:bg-teal-50 rounded-lg transition-colors"><i class="fa-solid fa-leaf mr-1"></i>힐링제주</a>
                     <a href="#map-section" class="px-3 py-2 text-sm font-medium text-slate-600 hover:text-orange-600 hover:bg-slate-50 rounded-lg transition-colors">여행동선</a>
@@ -144,7 +146,7 @@
                 <div class="bg-slate-50 p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                     <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 text-4xl">🌺</div>
                     <h3 class="text-2xl font-bold text-slate-800 mb-3 font-title">다채로운 힐링 테마</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">신창풍차해안의 절경, 동백 숲 카멜리아힐, 신비로운 미디어아트까지 동선을 최적화한 알찬 힐링을 선사합니다.</p>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">안덕계곡의 비경, 동백 숲 카멜리아힐, 신비로운 미디어아트까지 동선을 최적화한 알찬 힐링을 선사합니다.</p>
                     <span class="inline-block bg-blue-500 text-white text-xs px-3 py-1 rounded-full font-bold">재충전의 시간</span>
                 </div>
 
@@ -153,6 +155,48 @@
                     <h3 class="text-2xl font-bold text-slate-800 mb-3 font-title">제주의 맛, 미식 투어</h3>
                     <p class="text-slate-600 text-sm leading-relaxed mb-4">흑우 불고기부터 통갈치조림, 흑돼지, 토종닭 샤브샤브까지 제주가 주는 최고의 보양식을 엄선했습니다.</p>
                     <span class="inline-block bg-orange-500 text-white text-xs px-3 py-1 rounded-full font-bold">오감 만족 미식</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Jeju Section -->
+    <section id="about-jeju" class="py-16 bg-white border-t border-slate-100">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12 max-w-6xl mx-auto">
+                <div class="lg:w-1/2 relative">
+                    <div class="absolute -inset-4 bg-orange-100 rounded-[2.5rem] transform -rotate-3 z-0"></div>
+                    <img src="https://ndev-api.visitjeju.net/ptLettnfiledetail/real_path/202511/25/d67211d1-579a-4d6d-a671-c6a307eed8f6.webp" alt="Jeju Nature" class="relative z-10 rounded-[2rem] shadow-xl w-full object-cover h-[400px]">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-lg z-20 font-bold text-teal-600 flex items-center gap-2">
+                        <i class="fa-solid fa-leaf text-2xl"></i> 유네스코 세계자연유산
+                    </div>
+                </div>
+                <div class="lg:w-1/2 space-y-6">
+                    <span class="text-teal-500 font-black tracking-widest text-xs uppercase">Welcome to Jeju</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 font-title leading-tight">
+                        쉼표가 필요한 당신에게,<br>
+                        <span class="text-orange-500">제주가 건네는 위로</span>
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed text-justify">
+                        에메랄드빛 바다와 검은 현무암, 그리고 사계절 푸른 숲을 품고 있는 생명의 섬 제주. 일상의 치열함에서 잠시 벗어나, 자연이 빚어낸 경이로운 풍경 속에서 온전한 쉼을 경험해 보세요.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed text-justify">
+                        이번 정선군 보육교직원 워크숍은 아이들에게 따뜻한 내일을 선물하기 위해 애쓰신 선생님들을 위한 재충전의 여정입니다. 한라산의 맑은 공기와 제주의 넉넉한 인심이 선생님들의 몸과 마음에 깊은 힐링을 선사할 것입니다.
+                    </p>
+                    <div class="pt-4 flex gap-4">
+                        <div class="text-center bg-slate-50 rounded-xl p-4 flex-1 shadow-sm border border-slate-100">
+                            <i class="fa-solid fa-wind text-blue-400 text-2xl mb-2"></i>
+                            <div class="font-bold text-slate-800 text-sm mt-1">청정한 바람</div>
+                        </div>
+                        <div class="text-center bg-slate-50 rounded-xl p-4 flex-1 shadow-sm border border-slate-100">
+                            <i class="fa-solid fa-water text-teal-400 text-2xl mb-2"></i>
+                            <div class="font-bold text-slate-800 text-sm mt-1">푸른 바다</div>
+                        </div>
+                        <div class="text-center bg-slate-50 rounded-xl p-4 flex-1 shadow-sm border border-slate-100">
+                            <i class="fa-solid fa-mountain-sun text-orange-400 text-2xl mb-2"></i>
+                            <div class="font-bold text-slate-800 text-sm mt-1">오름과 숲</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -177,13 +221,13 @@
                     <div>
                         <h4 class="font-bold text-slate-800 flex items-center gap-2 mb-3 text-lg"><i class="fa-solid fa-camera-retro text-purple-600"></i> 노형수퍼마켓 & 해안도로</h4>
                         <p class="text-sm text-slate-600 leading-relaxed text-justify">
-                            빛과 소리가 만들어내는 압도적인 미디어아트 전시관인 노형수퍼마켓에서 이색적인 사진을 남기고, 풍차가 돌아가는 신창해안도로를 따라 시원한 제주의 바닷바람을 맞이합니다.
+                            빛과 소리가 만들어내는 압도적인 미디어아트 전시관인 노형수퍼마켓에서 이색적인 사진을 남기고, 풍차가 돌아가는 신창해안도로와 사계해안을 따라 시원한 제주의 바닷바람을 맞이합니다.
                         </p>
                     </div>
                     <div>
-                        <h4 class="font-bold text-slate-800 flex items-center gap-2 mb-3 text-lg"><i class="fa-solid fa-tree text-green-600"></i> 카멜리아힐 & 군산오름</h4>
+                        <h4 class="font-bold text-slate-800 flex items-center gap-2 mb-3 text-lg"><i class="fa-solid fa-tree text-green-600"></i> 안덕계곡 & 카멜리아힐</h4>
                         <p class="text-sm text-slate-600 leading-relaxed text-justify">
-                            사계절 내내 아름다운 꽃과 나무를 만날 수 있는 수목원 카멜리아힐에서 인생 사진을 남기고, 동선상 최적의 힐링 포인트인 군산오름에서 탁 트인 제주의 남서부 조망을 감상합니다.
+                            천연기념물로 지정된 신비로운 상록수림인 안덕계곡에서 자연의 숨결을 느끼고, 사계절 내내 아름다운 꽃을 만날 수 있는 수목원 카멜리아힐에서 인생 사진과 함께 힐링을 경험합니다.
                         </p>
                     </div>
                 </div>
@@ -280,7 +324,7 @@
                             <span class="text-5xl bg-blue-100 p-4 rounded-3xl">🌊</span>
                             <div>
                                 <h3 class="font-black text-2xl text-slate-800">색채와 자연의 하모니</h3>
-                                <p class="text-blue-600 font-bold text-sm italic">노형수퍼마켓 → 신창해안도로 → 군산오름 → 카멜리아힐</p>
+                                <p class="text-blue-600 font-bold text-sm italic">노형수퍼마켓 → 해안도로/사계해안 → 안덕계곡 → 카멜리아힐</p>
                             </div>
                         </div>
                         <div class="space-y-8">
@@ -291,8 +335,8 @@
                             </div>
                             <div class="relative pl-10 border-l-2 border-blue-100">
                                 <div class="absolute left-[-11px] top-0 w-5 h-5 rounded-full bg-blue-400 border-4 border-white shadow-sm"></div>
-                                <h4 class="font-bold text-xl text-slate-800">한수리방파제~신창풍차해안도로~수월봉</h4>
-                                <p class="text-slate-500 text-sm mt-1">제주 서부 최고의 드라이브 코스와 이국적인 풍력발전기 풍경</p>
+                                <h4 class="font-bold text-xl text-slate-800">한수리~신창해안도로~수월봉 & 사계해안</h4>
+                                <p class="text-slate-500 text-sm mt-1">서부 드라이브 코스와 형제섬이 보이는 사계해안의 절경 감상</p>
                             </div>
                             <div class="relative pl-10 border-l-2 border-blue-100">
                                 <div class="absolute left-[-11px] top-0 w-5 h-5 rounded-full bg-orange-400 border-4 border-white shadow-sm"></div>
@@ -300,9 +344,14 @@
                                 <p class="text-slate-500 text-sm mt-1">서귀포 사계 인근에서 맛보는 매콤달콤 밥도둑 정식</p>
                             </div>
                             <div class="relative pl-10 border-l-2 border-blue-100">
+                                <div class="absolute left-[-11px] top-0 w-5 h-5 rounded-full bg-teal-500 border-4 border-white shadow-sm"></div>
+                                <h4 class="font-bold text-xl text-slate-800">안덕계곡 탐방</h4>
+                                <p class="text-slate-500 text-sm mt-1">울창한 상록수림과 기암절벽이 어우러진 신비로운 계곡 힐링 산책</p>
+                            </div>
+                            <div class="relative pl-10 border-l-2 border-blue-100">
                                 <div class="absolute left-[-11px] top-0 w-5 h-5 rounded-full bg-green-500 border-4 border-white shadow-sm"></div>
                                 <h4 class="font-bold text-xl text-slate-800">군산오름 & 카멜리아힐</h4>
-                                <p class="text-slate-500 text-sm mt-1">탁 트인 조망의 군산오름을 걷고, 제주의 대표 수목원 카멜리아힐 산책 및 힐링</p>
+                                <p class="text-slate-500 text-sm mt-1">탁 트인 조망의 오름을 걷고, 제주의 대표 수목원 카멜리아힐 산책</p>
                             </div>
                             <div class="relative pl-10">
                                 <div class="absolute left-[-11px] top-0 w-5 h-5 rounded-full bg-red-600 border-4 border-white shadow-sm"></div>
@@ -415,7 +464,7 @@
 
     </div>
 
-    <!-- 🖨️ 인쇄용 A4 레이아웃 (새로운 일정 구조 완벽 반영) -->
+    <!-- 🖨️ 인쇄용 A4 레이아웃 -->
     <div id="print-layout" class="hidden print:flex flex-col h-[260mm] w-full bg-white text-black mx-auto p-4 box-border">
         
         <!-- Header -->
@@ -465,9 +514,11 @@
                             <ul class="list-disc pl-5 space-y-2 font-medium">
                                 <li>기상 및 조식 후 관광 출발</li>
                                 <li><span class="font-black text-black">노형수퍼마켓(미디어아트)</span> 관람</li>
-                                <li>한수리방파제 - <span class="font-black text-black">신창풍차해안도로</span> - 수월봉 해안 절경</li>
+                                <li>한수리방파제 - 신창풍차해안도로 - 수월봉 해안 절경</li>
+                                <li><span class="font-black text-black">사계해안</span> 탐방</li>
                                 <li>중식(갈치조림+고등어구이, 사계 인근)</li>
-                                <li><span class="font-black text-black">군산오름 및 카멜리아힐 산책</span></li>
+                                <li><span class="font-black text-black">안덕계곡</span> 산책</li>
+                                <li>군산오름 및 카멜리아힐 산책</li>
                                 <li>석식(흑돼지구이) 후 숙소 도착 및 자유시간</li>
                             </ul>
                         </td>
@@ -534,7 +585,7 @@
             if(mapInited || !window.L) return;
             mapInited = true;
             
-            // 좌표 업데이트 (안덕계곡 제거, 카멜리아힐 추가)
+            // 좌표 업데이트 (사계해안, 안덕계곡 추가)
             const spots = {
                 airport: [33.5104, 126.4913],
                 ihotewoo: [33.4985, 126.4528],
@@ -543,8 +594,10 @@
                 asiaHotel: [33.4886, 126.4958],
                 nohyeong: [33.4735, 126.4673],
                 sinchang: [33.3444, 126.1776],
+                sagye: [33.2269, 126.3155], // 사계해안
+                andeok: [33.2568, 126.3533], // 안덕계곡
                 gunsan: [33.2505, 126.3703],
-                camellia: [33.2903, 126.3683], // 카멜리아힐 추가
+                camellia: [33.2903, 126.3683],
                 saryeoni: [33.4035, 126.6441],
                 greentea: [33.4116, 126.7126]
             };
@@ -567,6 +620,8 @@
                 hotel: L.marker(spots.asiaHotel, {icon: createIcon('#8b5cf6', '🏨')}).bindPopup('아시아호텔'),
                 nh: L.marker(spots.nohyeong, {icon: createIcon('#3b82f6', '📷')}).bindPopup('노형수퍼마켓'),
                 sc: L.marker(spots.sinchang, {icon: createIcon('#3b82f6', '🌊')}).bindPopup('신창풍차해안도로'),
+                sg: L.marker(spots.sagye, {icon: createIcon('#3b82f6', '🏖️')}).bindPopup('사계해안'),
+                ad: L.marker(spots.andeok, {icon: createIcon('#3b82f6', '🏞️')}).bindPopup('안덕계곡'),
                 gs: L.marker(spots.gunsan, {icon: createIcon('#3b82f6', '⛰️')}).bindPopup('군산오름'),
                 cm: L.marker(spots.camellia, {icon: createIcon('#e11d48', '🌺')}).bindPopup('카멜리아힐'),
                 sr: L.marker(spots.saryeoni, {icon: createIcon('#22c55e', '🌲')}).bindPopup('사려니숲길'),
@@ -576,13 +631,13 @@
             // 동선 폴리라인 업데이트 (순서 정밀 반영)
             const paths = {
                 d1: L.polyline([spots.airport, spots.ihotewoo, spots.daycare, spots.sumokwon, spots.asiaHotel], {color:'#f97316', weight:5, opacity:0.7}),
-                d2: L.polyline([spots.asiaHotel, spots.nohyeong, spots.sinchang, spots.gunsan, spots.camellia, spots.asiaHotel], {color:'#3b82f6', weight:5, opacity:0.7}),
+                d2: L.polyline([spots.asiaHotel, spots.nohyeong, spots.sinchang, spots.sagye, spots.andeok, spots.gunsan, spots.camellia, spots.asiaHotel], {color:'#3b82f6', weight:5, opacity:0.7}),
                 d3: L.polyline([spots.asiaHotel, spots.saryeoni, spots.greentea, spots.airport], {color:'#22c55e', weight:5, opacity:0.7, dashArray:'10,10'})
             };
 
             dayLayers = {
                 day1: L.layerGroup([markers.apt, markers.iho, markers.dc, markers.sm, markers.hotel, paths.d1]),
-                day2: L.layerGroup([markers.hotel, markers.nh, markers.sc, markers.gs, markers.cm, paths.d2]),
+                day2: L.layerGroup([markers.hotel, markers.nh, markers.sc, markers.sg, markers.ad, markers.gs, markers.cm, paths.d2]),
                 day3: L.layerGroup([markers.hotel, markers.sr, markers.gt, markers.apt, paths.d3])
             };
 
