@@ -17,7 +17,7 @@
     <!-- SEO & Open Graph (요청하신 고화질 풍경 사진 적용) -->
     <meta name="description" content="아이들의 내일을 밝히는 정선의 원동력! 보육교직원 힐링 워크숍 스마트 가이드북">
     <meta property="og:title" content="🌴 [정선군청] 2026 어린이집 보육교직원 워크숍">
-    <meta property="og:image" content="https://tse1.mm.bing.net/th/id/OIP.zrY9Nsghi5_BLKGpDFAOugHaLz?w=474&h=474&c=7&p=0">
+    <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/e/ee/Seongsan_Ilchulbong_1.jpg">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -34,7 +34,7 @@
         
         /* 🏞️ 배경 이미지 고화질 사진으로 교체 완료 */
         .hero-bg { 
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('https://tse1.mm.bing.net/th/id/OIP.zrY9Nsghi5_BLKGpDFAOugHaLz?w=474&h=474&c=7&p=0');
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('https://images.pexels.com/photos/30966649/pexels-photo-30966649/free-photo-of-aerial-view-of-coastal-town-on-jeju-island.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2');
             background-size: cover; background-position: center; background-attachment: fixed;
             background-repeat: no-repeat;
         }
@@ -74,6 +74,12 @@
             th { background-color: #e5e7eb !important; }
             td.bg-gray-100 { background-color: #f3f4f6 !important; }
         }
+        
+        /* 날씨 위젯 가로 스크롤 그림자 효과 */
+        .weather-scroll-fade {
+            -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+        }
     </style>
 </head>
 <body class="antialiased pb-20 md:pb-0">
@@ -96,6 +102,7 @@
                 <div class="flex items-center space-x-1 md:space-x-6 whitespace-nowrap pr-4">
                     <a href="#home" class="px-3 py-2 text-sm font-bold text-slate-600 hover:text-orange-600 hover:bg-slate-50 rounded-lg transition-colors">홈</a>
                     <a href="#about-jeju" class="px-3 py-2 text-sm font-medium text-slate-600 hover:text-orange-600 hover:bg-slate-50 rounded-lg transition-colors">제주소개</a>
+                    <a href="#weather-outfit" class="px-3 py-2 text-sm font-bold text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition-colors"><i class="fa-solid fa-cloud-sun-rain mr-1 text-blue-400"></i>날씨/옷차림</a>
                     <a href="#highlights" class="px-3 py-2 text-sm font-bold text-orange-600 hover:text-orange-800 hover:bg-orange-50 rounded-lg transition-colors"><i class="fa-solid fa-star mr-1 text-yellow-400"></i>포인트</a>
                     <a href="#map-section" class="px-3 py-2 text-sm font-medium text-slate-600 hover:text-orange-600 hover:bg-slate-50 rounded-lg transition-colors">여행동선</a>
                     <a href="#schedule" class="px-3 py-2 text-sm font-medium text-slate-600 hover:text-orange-600 hover:bg-slate-50 rounded-lg transition-colors">세부일정</a>
@@ -189,6 +196,66 @@
                     <p class="text-slate-600 leading-relaxed text-justify">
                         이번 정선군 보육교직원 워크숍은 아이들에게 따뜻한 내일을 선물하기 위해 애쓰신 선생님들을 위한 재충전의 여정입니다. 한라산의 맑은 공기와 제주의 넉겁한 인심이 선생님들의 몸과 마음에 깊은 힐링을 선사할 것입니다.
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weather & Outfit Section (API 연동 적용) -->
+    <section id="weather-outfit" class="py-16 bg-blue-50/50 border-t border-slate-100 relative">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-10">
+                <span class="text-blue-500 font-black tracking-widest text-xs uppercase">Weather & Outfit</span>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mt-2 font-title">실시간 주간 날씨 & 옷차림 가이드</h2>
+                <p class="text-slate-500 text-sm mt-2">행사 1주일 전부터 현지 날씨가 정확히 예보됩니다.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto bg-white rounded-[2.5rem] shadow-lg border border-slate-100 overflow-hidden">
+                <!-- 🌦️ 실시간 날씨 위젯 영역 -->
+                <div class="bg-slate-800 p-6 text-white relative">
+                    <div class="flex items-center justify-between mb-4 px-2">
+                        <div class="font-bold text-sm"><i class="fa-solid fa-location-dot text-blue-400 mr-2"></i>제주특별자치도 현재 예보</div>
+                        <div class="text-xs text-slate-400">Open-Meteo API</div>
+                    </div>
+                    
+                    <div class="weather-scroll-fade">
+                        <div id="weather-widget" class="flex overflow-x-auto gap-4 pb-2 pt-1 px-4 no-scrollbar">
+                            <!-- JS로 데이터가 주입되는 공간 (로딩 스켈레톤) -->
+                            <div class="min-w-[100px] flex justify-center py-4"><i class="fa-solid fa-spinner fa-spin text-2xl text-slate-500"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 👕 옷차림 가이드 영역 -->
+                <div class="p-8 grid grid-cols-1 sm:grid-cols-2 gap-6 bg-white">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center shrink-0 text-xl"><i class="fa-solid fa-shirt"></i></div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-1">기본 옷차림 (초여름 기준)</h4>
+                            <p class="text-sm text-slate-500">통기성이 좋은 <b>반팔, 얇은 긴팔, 린넨 소재</b>의 편안한 옷을 추천합니다.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center shrink-0 text-xl"><i class="fa-solid fa-wind"></i></div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-1">바람막이/가디건</h4>
+                            <p class="text-sm text-slate-500">냉방이 강한 실내나 저녁 바닷바람에 대비해 <b>가벼운 겉옷</b>은 필수입니다.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center shrink-0 text-xl"><i class="fa-solid fa-shoe-prints"></i></div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-1">편안한 신발</h4>
+                            <p class="text-sm text-slate-500">오름, 숲길, 해안가 산책 일정이 있으므로 <b>발이 편한 운동화</b>를 꼭 챙겨주세요.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center shrink-0 text-xl"><i class="fa-solid fa-umbrella"></i></div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-1">필수 소지품</h4>
+                            <p class="text-sm text-slate-500">강한 햇빛을 가릴 <b>모자, 선글라스, 자외선 차단제</b>와 비상용 <b>작은 우산(우비)</b>.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -539,8 +606,74 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
+        // ☀️ 날씨 API 연동 로직 (Open-Meteo)
+        async function fetchWeather() {
+            const lat = 33.4996; // 제주 위도
+            const lon = 126.5312; // 제주 경도
+            const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=Asia%2FSeoul`;
+
+            const widget = document.getElementById('weather-widget');
+            
+            try {
+                const res = await fetch(url);
+                const data = await res.json();
+                renderWeather(data.daily, widget);
+            } catch (e) {
+                // API 호출 실패 시 방어(Fallback) 로직
+                widget.innerHTML = `<div class="p-4 text-center w-full text-slate-400 text-sm">실시간 날씨 정보를 불러오지 못했습니다. 행사일이 다가오면 다시 확인해주세요.</div>`;
+            }
+        }
+
+        function renderWeather(daily, container) {
+            let html = '';
+            const days = ['일', '월', '화', '수', '목', '금', '토'];
+
+            // WMO 날씨 코드를 직관적인 아이콘과 텍스트로 매핑
+            const wmoCodeToIcon = (code) => {
+                if (code === 0) return { icon: 'fa-sun text-yellow-400', text: '맑음' };
+                if (code === 1 || code === 2) return { icon: 'fa-cloud-sun text-slate-300', text: '구름조금' };
+                if (code === 3) return { icon: 'fa-cloud text-slate-400', text: '흐림' };
+                if ([45, 48].includes(code)) return { icon: 'fa-smog text-slate-400', text: '안개' };
+                if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code)) return { icon: 'fa-cloud-rain text-blue-400', text: '비' };
+                if ([71, 73, 75, 85, 86].includes(code)) return { icon: 'fa-snowflake text-teal-300', text: '눈' };
+                if ([95, 96, 99].includes(code)) return { icon: 'fa-cloud-bolt text-purple-400', text: '뇌우' };
+                return { icon: 'fa-cloud text-slate-400', text: '알수없음' };
+            };
+
+            for (let i = 0; i < 7; i++) {
+                const dateStr = daily.time[i];
+                const d = new Date(dateStr);
+                const dayName = days[d.getDay()];
+                const monthDate = `${d.getMonth()+1}/${d.getDate()}`;
+                const max = Math.round(daily.temperature_2m_max[i]);
+                const min = Math.round(daily.temperature_2m_min[i]);
+                const wInfo = wmoCodeToIcon(daily.weathercode[i]);
+
+                const isToday = i === 0 ? 'bg-slate-700 border-slate-600 shadow-md ring-1 ring-blue-500' : 'bg-slate-800 border-slate-700 opacity-90';
+                const todayBadge = i === 0 ? `<div class="absolute -top-2 -right-2 bg-blue-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full">오늘</div>` : '';
+
+                html += `
+                    <div class="relative min-w-[85px] flex-shrink-0 flex flex-col items-center p-3 rounded-2xl border ${isToday} transition-transform hover:-translate-y-1">
+                        ${todayBadge}
+                        <div class="text-xs font-bold text-slate-300 mb-2">${monthDate} <span class="font-medium text-slate-400">(${dayName})</span></div>
+                        <i class="fa-solid ${wInfo.icon} text-2xl mb-2 drop-shadow-lg"></i>
+                        <div class="text-[10px] font-bold text-slate-300 mb-2">${wInfo.text}</div>
+                        <div class="text-xs font-black flex gap-1.5 items-center">
+                            <span class="text-blue-400">${min}°</span> 
+                            <span class="text-slate-500 font-light">|</span> 
+                            <span class="text-red-400">${max}°</span>
+                        </div>
+                    </div>
+                `;
+            }
+            container.innerHTML = html;
+        }
+
         // 🗓️ 3단계 D-Day 분기 처리 로직 (행사 전 / 행사 중 / 행사 후)
         document.addEventListener('DOMContentLoaded', () => {
+            // DOM이 로드되면 날씨 데이터 즉시 호출
+            fetchWeather();
+
             const today = new Date();
             today.setHours(0,0,0,0);
             
