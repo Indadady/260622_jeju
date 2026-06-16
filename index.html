@@ -17,7 +17,10 @@
     <!-- SEO & Open Graph -->
     <meta name="description" content="아이들의 내일을 밝히는 정선의 원동력! 보육교직원 힐링 워크숍 스마트 가이드북">
     <meta property="og:title" content="🌴 [정선군청] 2026 어린이집 보육교직원 워크숍">
-    <meta property="og:image" content="https://marvelsofnature.com/wp-content/uploads/2024/07/1-Jejus-Natural-Beauty-1400x800.webp">
+    <meta property="og:image" content="https://indadady.github.io/260622_jeju/assets/images/og-thumb.jpg">
+    <meta property="og:image:width" content="1920">
+    <meta property="og:image:height" content="1272">
+    <meta property="og:image:alt" content="제주 성산일출봉 대표 전경">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -34,7 +37,7 @@
         
         /* 🏞️ 배경 이미지 */
         .hero-bg { 
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('https://images.pexels.com/photos/30966649/pexels-photo-30966649/free-photo-of-aerial-view-of-coastal-town-on-jeju-island.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2');
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('assets/images/hero.jpg');
             background-size: cover; background-position: center; background-attachment: fixed;
             background-repeat: no-repeat;
         }
@@ -203,10 +206,9 @@
             <div class="flex flex-col lg:flex-row items-center gap-12 max-w-6xl mx-auto">
                 <div class="lg:w-1/2 relative">
                     <div class="absolute -inset-4 bg-orange-100 rounded-[2.5rem] transform -rotate-3 z-0"></div>
-                    <!-- ✅ 사진 교체 완료 -->
                     <img 
-                        src="https://marvelsofnature.com/wp-content/uploads/2024/07/1-Jejus-Natural-Beauty-1400x800.webp" 
-                        alt="제주의 자연" 
+                        src="assets/images/about-jeju.jpg" 
+                        alt="제주 용머리해안 — 에메랄드 바다와 현무암 절벽" 
                         class="relative z-10 rounded-[2rem] shadow-xl w-full object-cover h-[400px]"
                     >
                     <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-lg z-20 font-bold text-teal-600 flex items-center gap-2">
@@ -256,8 +258,27 @@
                             </div>
                         </div>
                         <div class="text-center md:text-right">
-                            <span class="inline-block px-3 py-1 bg-sky-100 text-sky-700 font-bold text-[11px] rounded-full mb-1 uppercase tracking-widest">e-Ticket Status: Confirmed</span>
+                            <span class="inline-block px-3 py-1 bg-sky-100 text-sky-700 font-bold text-[11px] rounded-full mb-1 uppercase tracking-widest">e-Ticket Status: Confirmed (HK)</span>
                             <p class="text-xs text-slate-400 font-medium">* 출발 1시간 전까지 공항에 도착해 주세요.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8 p-5 bg-lime-50 rounded-2xl border border-lime-100">
+                        <div>
+                            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">예약번호 (PNR)</p>
+                            <p class="text-lg font-black text-lime-700 tracking-widest">AP5RZT</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">그룹명</p>
+                            <p class="text-sm font-bold text-slate-700">정선군청 가족행복과</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">좌석 / 예약일</p>
+                            <p class="text-sm font-bold text-slate-700">18석 · 2026.03.27 발권</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">예약대행</p>
+                            <p class="text-sm font-bold text-slate-700">제주테마투어</p>
                         </div>
                     </div>
 
@@ -342,16 +363,10 @@
                             <div class="hotel-slider shadow-lg">
                                 <div class="hotel-slides" id="hotelSlides">
                                     <div class="hotel-slide">
-                                        <img src="https://lh3.googleusercontent.com/places/ANXAkqFkJqI7LxaiEWVfSkEzM511LWH6EOIEQZxCCww1I4tB30dSdLdSQ8PzWwi-PlXgGHmdTFvPa3JmtnvvLywh-yaZIdYozbLBGg8=s4800-w800-h600" alt="아시아호텔 제주 전경" onerror="this.src='https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=500&fit=crop'">
+                                        <img src="assets/images/hotel-1.jpg" alt="아시아호텔 제주 외관 전경">
                                     </div>
                                     <div class="hotel-slide">
-                                        <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZP2EojS3-J1lcq2n8A1BVQC6fyteax2C1LvTNv8wGYMhtn5RDxN3U29_n9Ve5-gIPP9VH-utLZbZKSfMtM4QTps0eSqdlBgvx_sa_TfUDsKICfczwcBvCaU4fxi0Ybtcz0HpzcvVUdCx68uEg=s4800-w800-h600" alt="아시아호텔 제주 객실" onerror="this.src='https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800&h=500&fit=crop'">
-                                    </div>
-                                    <div class="hotel-slide">
-                                        <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZNm7AjS7r_QErqOcMf2X4apfnno1uisGPVqoKeyaaYIy3S9qn0m0WdDkUfEn1xd3O4xBcwUyIhfePCTh_GA76GKsbqDwtFFXPCwbr95RhF7-UdUPl-YPdWxpH9QA2DlN5BaFYPOH_x5udCF=s4800-w800-h600" alt="아시아호텔 제주 내부" onerror="this.src='https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=500&fit=crop'">
-                                    </div>
-                                    <div class="hotel-slide">
-                                        <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZOgwULerZj4kOBjlDpg4RR4P1d1OCH7LekwWM_dOvi6dwKJHZsW0_5nlEdlvlaXDPOSGjtaBn-4XDEysARhmQMthKolS0w-s2UuWr14aYWae_PFtmCgKqG6Kilf1_8Nez11XDtPZ7yXrkCVpw=s4800-w800-h600" alt="아시아호텔 제주 부대시설" onerror="this.src='https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&h=500&fit=crop'">
+                                        <img src="assets/images/hotel-2.jpg" alt="아시아호텔 제주 건물 정면">
                                     </div>
                                 </div>
                             </div>
@@ -363,8 +378,6 @@
                                 <div class="slider-dots" id="sliderDots">
                                     <div class="slider-dot active" onclick="goToSlide(0)"></div>
                                     <div class="slider-dot" onclick="goToSlide(1)"></div>
-                                    <div class="slider-dot" onclick="goToSlide(2)"></div>
-                                    <div class="slider-dot" onclick="goToSlide(3)"></div>
                                 </div>
                                 <button onclick="nextSlide()" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-violet-100 hover:text-violet-600 transition flex items-center justify-center text-slate-500">
                                     <i class="fa-solid fa-chevron-right text-sm"></i>
@@ -943,7 +956,7 @@
     <script>
         // ===== 호텔 이미지 슬라이더 =====
         let currentSlide = 0;
-        const totalSlides = 4;
+        const totalSlides = 2;
 
         function goToSlide(index) {
             currentSlide = index;
